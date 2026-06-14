@@ -299,10 +299,10 @@ const DATA = {
       icon: FiSmartphone,
       badgeColor: "purple",
       description:
-        "Flutter rental marketplace application implementing MVC architecture.",
+        "Flutter rental marketplace application implementing MVC architecture with Midtrans payment gateway integration (sandbox environment).",
       image: "/rentify.png",
       imageBg: "linear-gradient(135deg, #fce7f3 0%, #fdf4ff 100%)",
-      stack: ["Flutter", "Dart", "MVC"],
+      stack: ["Flutter", "Dart", "MVC", "Midtrans"],
       github: "#",
       demo: "https://drive.google.com/file/d/1GNg0h50XdfDWLJXKA2vEDBXRNlI4Oua2/view?usp=sharing",
     },
