@@ -17,6 +17,7 @@ import {
   FiCoffee,
   FiTerminal,
   FiMapPin,
+  FiZap,
 } from "react-icons/fi";
 
 import {
@@ -28,6 +29,10 @@ import {
   FiBook,
   FiCode,
   FiLayers,
+  FiDatabase,
+  FiGlobe,
+  FiPackage,
+  FiServer,
 } from "react-icons/fi";
 
 import {
@@ -38,12 +43,196 @@ import {
   FaBriefcase,
   FaVolumeUp,
   FaHeartbeat,
+  FaNodeJs,
+  FaPython,
+  FaDocker,
+  FaReact,
 } from "react-icons/fa";
+import {
+  SiNextdotjs,
+  SiNestjs,
+  SiExpress,
+  SiLaravel,
+  SiPostgresql,
+  SiMysql,
+  SiMongodb,
+  SiSupabase,
+  SiFirebase,
+  SiTailwindcss,
+  SiTypescript,
+  SiFlutter,
+  SiDart,
+  SiGit,
+  SiGitlab,
+  SiJenkins,
+  SiPython,
+} from "react-icons/si";
 import { DiNodejs } from "react-icons/di";
 
 // ============================================================
 // DATA
 // ============================================================
+
+const SKILL_GROUPS = [
+  {
+    category: "Frontend",
+    color: "blue",
+    icon: FiMonitor,
+    skills: [
+      { name: "Next.js", icon: SiNextdotjs },
+      { name: "React", icon: FaReact },
+      { name: "Tailwind CSS", icon: SiTailwindcss },
+      { name: "TypeScript", icon: SiTypescript },
+    ],
+  },
+  {
+    category: "Backend",
+    color: "violet",
+    icon: FiServer,
+    skills: [
+      { name: "NestJS", icon: SiNestjs },
+      { name: "Express.js", icon: SiExpress },
+      { name: "Node.js", icon: FaNodeJs },
+      { name: "WebSocket", icon: FiZap },
+      { name: "Laravel", icon: SiLaravel },
+    ],
+  },
+  {
+    category: "Database",
+    color: "emerald",
+    icon: FiDatabase,
+    skills: [
+      { name: "PostgreSQL", icon: SiPostgresql },
+      { name: "MySQL", icon: SiMysql },
+      { name: "MongoDB", icon: SiMongodb },
+      { name: "Supabase", icon: SiSupabase },
+      { name: "Firebase", icon: SiFirebase },
+    ],
+  },
+  {
+    category: "Mobile & IoT",
+    color: "rose",
+    icon: FiSmartphone,
+    skills: [
+      { name: "Flutter", icon: SiFlutter },
+      { name: "Dart", icon: SiDart },
+      { name: "ESP32", icon: FiCpu },
+    ],
+  },
+  {
+    category: "Languages",
+    color: "amber",
+    icon: FiCode,
+    skills: [
+      { name: "Java", icon: FaJava },
+      { name: "Python", icon: SiPython },
+      { name: "C", icon: FiCode },
+      { name: "TypeScript", icon: SiTypescript },
+    ],
+  },
+  {
+    category: "DevOps & Tools",
+    color: "slate",
+    icon: FiPackage,
+    skills: [
+      { name: "Git", icon: SiGit },
+      { name: "Docker", icon: FaDocker },
+      { name: "Jenkins", icon: SiJenkins },
+      { name: "GitLab", icon: SiGitlab },
+    ],
+  },
+];
+
+const colorMap: Record<
+  string,
+  {
+    bg: string;
+    text: string;
+    badge: string;
+    badgeText: string;
+    iconBg: string;
+    border: string;
+    pill: string;
+    pillText: string;
+    pillBorder: string;
+    pillHover: string;
+  }
+> = {
+  blue: {
+    bg: "bg-blue-50/60",
+    text: "text-blue-700",
+    badge: "bg-blue-100",
+    badgeText: "text-blue-700",
+    iconBg: "bg-blue-100",
+    border: "border-blue-100 hover:border-blue-300",
+    pill: "bg-white",
+    pillText: "text-slate-600",
+    pillBorder: "border-slate-200",
+    pillHover: "hover:border-blue-300 hover:text-blue-600 hover:bg-blue-50",
+  },
+  violet: {
+    bg: "bg-violet-50/60",
+    text: "text-violet-700",
+    badge: "bg-violet-100",
+    badgeText: "text-violet-700",
+    iconBg: "bg-violet-100",
+    border: "border-violet-100 hover:border-violet-300",
+    pill: "bg-white",
+    pillText: "text-slate-600",
+    pillBorder: "border-slate-200",
+    pillHover:
+      "hover:border-violet-300 hover:text-violet-600 hover:bg-violet-50",
+  },
+  emerald: {
+    bg: "bg-emerald-50/60",
+    text: "text-emerald-700",
+    badge: "bg-emerald-100",
+    badgeText: "text-emerald-700",
+    iconBg: "bg-emerald-100",
+    border: "border-emerald-100 hover:border-emerald-300",
+    pill: "bg-white",
+    pillText: "text-slate-600",
+    pillBorder: "border-slate-200",
+    pillHover:
+      "hover:border-emerald-300 hover:text-emerald-700 hover:bg-emerald-50",
+  },
+  rose: {
+    bg: "bg-rose-50/60",
+    text: "text-rose-700",
+    badge: "bg-rose-100",
+    badgeText: "text-rose-700",
+    iconBg: "bg-rose-100",
+    border: "border-rose-100 hover:border-rose-300",
+    pill: "bg-white",
+    pillText: "text-slate-600",
+    pillBorder: "border-slate-200",
+    pillHover: "hover:border-rose-300 hover:text-rose-600 hover:bg-rose-50",
+  },
+  amber: {
+    bg: "bg-amber-50/60",
+    text: "text-amber-700",
+    badge: "bg-amber-100",
+    badgeText: "text-amber-700",
+    iconBg: "bg-amber-100",
+    border: "border-amber-100 hover:border-amber-300",
+    pill: "bg-white",
+    pillText: "text-slate-600",
+    pillBorder: "border-slate-200",
+    pillHover: "hover:border-amber-300 hover:text-amber-700 hover:bg-amber-50",
+  },
+  slate: {
+    bg: "bg-slate-50/80",
+    text: "text-slate-700",
+    badge: "bg-slate-100",
+    badgeText: "text-slate-700",
+    iconBg: "bg-slate-100",
+    border: "border-slate-200 hover:border-slate-400",
+    pill: "bg-white",
+    pillText: "text-slate-600",
+    pillBorder: "border-slate-200",
+    pillHover: "hover:border-slate-400 hover:text-slate-800 hover:bg-slate-100",
+  },
+};
 
 const DATA = {
   profile: {
@@ -64,29 +253,6 @@ const DATA = {
     cv: "#",
   },
 
-  skills: [
-    {
-      category: "Frontend",
-      items: ["Next.js", "React", "Tailwind CSS", "CSS"],
-    },
-    {
-      category: "Backend",
-      items: ["NestJS", "Express.js", "Laravel"],
-    },
-    {
-      category: "Database",
-      items: ["PostgreSQL", "MySQL", "MongoDB", "Supabase", "Firebase"],
-    },
-    {
-      category: "Programming",
-      items: ["Java", "Python", "C", "Typescript"],
-    },
-    {
-      category: "DevOps & Tools",
-      items: ["Git", "Docker", "Jenkins", "GitLab"],
-    },
-  ],
-
   projects: [
     {
       name: "Taretan Camera",
@@ -101,7 +267,6 @@ const DATA = {
       github: "",
       demo: "https://fe-taretan-camera.vercel.app/",
     },
-
     {
       name: "SpeakMinds",
       category: "E-Learning",
@@ -115,7 +280,6 @@ const DATA = {
       github: "",
       demo: "https://fe-speak-minds-academy.vercel.app",
     },
-
     {
       name: "UV Sense",
       category: "IoT",
@@ -129,7 +293,6 @@ const DATA = {
       github: "#",
       demo: "",
     },
-
     {
       name: "Rentify",
       category: "Mobile",
@@ -180,7 +343,6 @@ const DATA = {
       github: "#",
       demo: "",
     },
-
     {
       name: "Vehicle Data Mining",
       category: "Data Science",
@@ -221,7 +383,7 @@ const DATA = {
         "Managed technical preparation and event logistics, including deploying digital infrastructure (Google Forms, Linktree) and setting up hardware equipment like projectors to support smooth event execution.",
     },
     {
-      icon: FiCoffee, // Menambahkan icon yang cocok untuk sie konsumsi/hospitality
+      icon: FiCoffee,
       title: "Consumption Committee",
       org: "Laboratory Assistant Open Recruitment Event 2025",
       period: "2024",
@@ -311,14 +473,13 @@ const DATA = {
       image: "certificates/unity.png",
     },
     {
-      icon: FaVolumeUp, // Menggunakan icon suara/komunikasi untuk Public Speaking
+      icon: FaVolumeUp,
       name: "National Public Speaking Training",
       org: "FESt Management x BEM FEB UMM",
       year: "2024",
       link: "#",
       image: "certificates/speaking.png",
     },
-
     {
       icon: FaLightbulb,
       name: "National Entrepreneurship Training",
@@ -335,7 +496,6 @@ const DATA = {
 // ============================================================
 
 type BadgeColor = "blue" | "green" | "orange" | "purple";
-
 type Certification = (typeof DATA.certifications)[number];
 
 // ============================================================
@@ -438,14 +598,12 @@ function CertificateModal({
   cert: Certification | null;
   onClose: () => void;
 }) {
-  // Close on Escape key
   useEffect(() => {
     if (!cert) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
     window.addEventListener("keydown", onKey);
-    // Lock body scroll while modal is open
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
@@ -465,15 +623,11 @@ function CertificateModal({
       aria-modal="true"
       aria-label={cert.name}
     >
-      {/* Backdrop */}
       <div
         className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm animate-[fadeIn_0.2s_ease-out]"
         onClick={onClose}
       />
-
-      {/* Modal panel */}
       <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg sm:max-w-xl max-h-[90vh] overflow-y-auto animate-[scaleIn_0.2s_ease-out]">
-        {/* Close button */}
         <button
           onClick={onClose}
           aria-label="Close"
@@ -481,8 +635,6 @@ function CertificateModal({
         >
           <FiX size={18} />
         </button>
-
-        {/* Image / preview area */}
         <div className="w-full aspect-[4/3] sm:aspect-[16/10] bg-slate-50 flex items-center justify-center overflow-hidden rounded-t-2xl border-b border-slate-200">
           {cert.image ? (
             // eslint-disable-next-line @next/next/no-img-element
@@ -502,8 +654,6 @@ function CertificateModal({
             </div>
           )}
         </div>
-
-        {/* Details */}
         <div className="p-5 sm:p-6">
           <div className="flex items-start gap-3 mb-3">
             <div className="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 flex-shrink-0">
@@ -516,7 +666,6 @@ function CertificateModal({
               <p className="text-sm text-slate-500 mt-1">{cert.org}</p>
             </div>
           </div>
-
           <div className="flex items-center justify-between flex-wrap gap-3 pt-3 border-t border-slate-100">
             <span className="text-sm font-semibold text-blue-600">
               {cert.year}
@@ -535,8 +684,6 @@ function CertificateModal({
           </div>
         </div>
       </div>
-
-      {/* Keyframes for animations */}
       <style jsx global>{`
         @keyframes fadeIn {
           from {
@@ -558,6 +705,69 @@ function CertificateModal({
         }
       `}</style>
     </div>
+  );
+}
+
+// ── SKILLS SECTION ────────────────────────────────────────
+function SkillsSection() {
+  return (
+    <section id="skills" className="py-20">
+      <div className="max-w-5xl mx-auto px-6">
+        <SectionHeader
+          eyebrow="What I work with"
+          title="Tech Stack & Skills"
+          desc="Tools, languages, and frameworks I use to build products end-to-end."
+        />
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {SKILL_GROUPS.map((group, i) => {
+            const GroupIcon = group.icon;
+            const c = colorMap[group.color];
+
+            return (
+              <FadeUp key={group.category} delay={i * 0.06}>
+                <div
+                  className={`relative rounded-2xl border p-5 h-full transition-all duration-200 hover:-translate-y-1 hover:shadow-lg ${c.bg} ${c.border}`}
+                >
+                  {/* Header */}
+                  <div className="flex items-center gap-3 mb-4">
+                    <div
+                      className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${c.iconBg}`}
+                    >
+                      <GroupIcon size={17} className={c.text} />
+                    </div>
+                    <span
+                      className={`text-xs font-bold tracking-widest uppercase ${c.text}`}
+                    >
+                      {group.category}
+                    </span>
+                  </div>
+
+                  {/* Divider */}
+                  <div className="h-px bg-white/70 mb-4" />
+
+                  {/* Skills */}
+                  <div className="flex flex-wrap gap-2">
+                    {group.skills.map((skill) => {
+                      const SkillIcon = skill.icon;
+                      return (
+                        <span
+                          key={skill.name}
+                          className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border transition-all duration-150 ${c.pill} ${c.pillText} ${c.pillBorder} ${c.pillHover} cursor-default`}
+                        >
+                          <SkillIcon size={13} />
+                          {skill.name}
+                        </span>
+                      );
+                    })}
+                  </div>
+                </div>
+              </FadeUp>
+            );
+          })}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -612,11 +822,8 @@ export default function Page() {
           <a
             href="#home"
             className="text-lg font-extrabold text-blue-600 tracking-tight flex-shrink-0"
-          >
-            {/* RT */}
-          </a>
+          />
 
-          {/* Desktop links */}
           <ul className="hidden md:flex gap-1 flex-1">
             {navLinks.map((l) => (
               <li key={l.href}>
@@ -634,7 +841,6 @@ export default function Page() {
             ))}
           </ul>
 
-          {/* Desktop actions */}
           <div className="hidden md:flex items-center gap-2 flex-shrink-0">
             <a
               href={p.github}
@@ -652,7 +858,6 @@ export default function Page() {
             </a>
           </div>
 
-          {/* Mobile toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="md:hidden ml-auto p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors"
@@ -662,7 +867,6 @@ export default function Page() {
           </button>
         </div>
 
-        {/* Mobile menu */}
         {mobileOpen && (
           <div className="md:hidden border-t border-slate-200 px-6 py-4 flex flex-col gap-1">
             {navLinks.map((l) => (
@@ -685,14 +889,6 @@ export default function Page() {
                 GitHub
               </a>
               <a
-                href={p.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                className="text-sm font-medium text-slate-600 hover:text-blue-600"
-              >
-                LinkedIn
-              </a>
-              <a
                 href={p.cv}
                 className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-blue-600 text-white text-sm font-medium rounded-lg"
               >
@@ -702,12 +898,12 @@ export default function Page() {
           </div>
         )}
       </nav>
+
       {/* ── HERO ─────────────────────────────────────────────── */}
       <section
         id="home"
         className="min-h-screen flex flex-col justify-center pt-24 pb-16 relative overflow-hidden"
       >
-        {/* Background glow */}
         <div
           className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full pointer-events-none"
           style={{
@@ -715,11 +911,9 @@ export default function Page() {
               "radial-gradient(circle, rgba(37,99,235,0.06) 0%, transparent 70%)",
           }}
         />
-
         <div className="max-w-5xl mx-auto px-6 w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-            {/* Left */}
-            <div className="order-2 md:order-1">
+            <div className="">
               <FadeUp>
                 <p className="text-blue-600 font-medium text-sm mb-2 tracking-wide">
                   {p.greeting}
@@ -733,7 +927,6 @@ export default function Page() {
                 <p className="text-sm text-slate-500 leading-relaxed max-w-sm mb-8">
                   {p.description}
                 </p>
-
                 <div className="flex gap-3 flex-wrap mb-8">
                   <a
                     href="#projects"
@@ -743,12 +936,11 @@ export default function Page() {
                   </a>
                   <a
                     href="#contact"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 border-1.5 border border-slate-200 hover:border-blue-400 hover:text-blue-600 hover:bg-blue-50 text-slate-600 text-sm font-medium rounded-lg transition-all"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 border border-slate-200 hover:border-blue-400 hover:text-blue-600 hover:bg-blue-50 text-slate-600 text-sm font-medium rounded-lg transition-all"
                   >
                     Contact Me
                   </a>
                 </div>
-
                 <div className="flex gap-2">
                   {[
                     {
@@ -777,11 +969,9 @@ export default function Page() {
               </FadeUp>
             </div>
 
-            {/* Right — photo */}
             <div className="order-1 md:order-2 flex justify-center">
               <FadeUp delay={0.15}>
                 <div className="relative pb-10">
-                  {/* Ambient glow */}
                   <div
                     className="absolute -top-6 -right-6 w-72 h-72 rounded-3xl pointer-events-none"
                     style={{
@@ -789,7 +979,6 @@ export default function Page() {
                         "radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 70%)",
                     }}
                   />
-                  {/* Photo */}
                   <div className="relative w-64 h-80 sm:w-72 sm:h-[26rem] md:w-80 md:h-[30rem] rounded-3xl overflow-hidden z-10">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
@@ -801,7 +990,6 @@ export default function Page() {
                         t.src = `https://api.dicebear.com/8.x/initials/svg?seed=RT&backgroundColor=2563EB&fontColor=ffffff&fontSize=42`;
                       }}
                     />
-                    {/* Subtle gradient overlay for depth */}
                     <div className="absolute inset-0 bg-gradient-to-t from-blue-900/10 via-transparent to-transparent pointer-events-none" />
                   </div>
                 </div>
@@ -809,12 +997,15 @@ export default function Page() {
             </div>
           </div>
         </div>
-
-        {/* Scroll hint */}
         <div className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-400 opacity-50 animate-bounce">
           <FiChevronDown size={20} />
         </div>
       </section>
+
+      {/* ── SKILLS ───────────────────────────────────────────── */}
+      <div className="bg-slate-50/70">
+        <SkillsSection />
+      </div>
 
       {/* ── PROJECTS ─────────────────────────────────────────── */}
       <section id="projects" className="py-20">
@@ -828,11 +1019,9 @@ export default function Page() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {DATA.projects.map((proj, i) => {
               const ProjectIcon = proj.icon;
-
               return (
                 <FadeUp key={proj.name} delay={i * 0.05}>
                   <article className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all duration-200 flex flex-col h-full">
-                    {/* Thumbnail */}
                     <div
                       className="h-40 flex items-center justify-center relative overflow-hidden"
                       style={{ background: proj.imageBg }}
@@ -854,7 +1043,6 @@ export default function Page() {
                       )}
                     </div>
 
-                    {/* Content */}
                     <div className="p-5 flex flex-col flex-1">
                       <span
                         className={`inline-flex items-center px-2.5 py-1 rounded text-xs font-semibold mb-3 w-fit ${
@@ -863,15 +1051,12 @@ export default function Page() {
                       >
                         {proj.category}
                       </span>
-
                       <h3 className="text-base font-bold text-slate-700 mb-2">
                         {proj.name}
                       </h3>
-
                       <p className="text-sm text-slate-500 leading-relaxed mb-4 flex-1">
                         {proj.description}
                       </p>
-
                       <div className="flex flex-wrap gap-2 mb-5">
                         {proj.stack.map((tech) => (
                           <span
@@ -882,7 +1067,6 @@ export default function Page() {
                           </span>
                         ))}
                       </div>
-
                       <div className="flex items-center gap-4 mt-auto">
                         {proj.github && proj.github !== "#" && (
                           <a
@@ -895,7 +1079,6 @@ export default function Page() {
                             GitHub
                           </a>
                         )}
-
                         {proj.demo && (
                           <a
                             href={proj.demo}
@@ -927,11 +1110,9 @@ export default function Page() {
           />
           <FadeUp delay={0.1}>
             <div className="max-w-2xl mx-auto relative pl-8">
-              {/* Vertical line */}
               <div className="absolute left-[7px] top-5 bottom-5 w-0.5 bg-slate-200" />
               {DATA.experience.map((exp) => (
                 <div key={exp.title} className="relative mb-8 last:mb-0">
-                  {/* Dot */}
                   <div className="absolute -left-[29px] top-5 w-3.5 h-3.5 rounded-full bg-blue-600 border-2 border-white shadow-[0_0_0_2px] shadow-blue-600" />
                   <div className="bg-white border border-slate-200 rounded-xl p-5 hover:shadow-md transition-shadow">
                     <div className="flex items-start justify-between gap-3 mb-2 flex-wrap">
@@ -977,14 +1158,11 @@ export default function Page() {
                   <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 flex-shrink-0">
                     <c.icon size={22} />
                   </div>
-
                   <div>
                     <h3 className="text-sm font-bold text-slate-700">
                       {c.name}
                     </h3>
-
                     <p className="text-xs text-slate-500">{c.category}</p>
-
                     <p className="text-xs text-slate-400 mt-1">
                       {c.description}
                     </p>
@@ -1010,19 +1188,15 @@ export default function Page() {
                   <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
                     <c.icon size={22} />
                   </div>
-
                   <div>
                     <h4 className="text-sm font-bold text-slate-700 leading-tight mb-1">
                       {c.name}
                     </h4>
-
                     <p className="text-xs text-slate-500">{c.org}</p>
-
                     <p className="text-xs font-semibold text-blue-600 mt-2">
                       {c.year}
                     </p>
                   </div>
-
                   <button
                     type="button"
                     onClick={() => setActiveCert(c)}
@@ -1080,17 +1254,15 @@ export default function Page() {
         </div>
       </section>
 
+      {/* ── FOOTER ───────────────────────────────────────────── */}
       <footer className="bg-slate-900 border-t border-slate-800 py-8">
         <div className="max-w-5xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-6">
-            {/* Info */}
+          <div className="flex flex-col md:flex-row md:items-center md:jus`tify-between gap-6 mb-6">
             <div>
               <h3 className="text-base font-semibold text-white">{p.name}</h3>
-
               <p className="text-sm text-slate-400 mt-1">
                 Fullstack Developer • Informatics Student
               </p>
-
               <div className="flex items-center gap-2 mt-3 text-sm text-slate-400">
                 <FiMail size={14} />
                 <a
@@ -1100,14 +1272,11 @@ export default function Page() {
                   {p.email}
                 </a>
               </div>
-
               <div className="flex items-center gap-2 mt-2 text-sm text-slate-500">
                 <FiMapPin size={14} />
                 <span>Junrejo, Batu, East Java, Indonesia</span>
               </div>
             </div>
-
-            {/* Social */}
             <div className="flex items-center gap-3">
               <a
                 href={p.github}
@@ -1118,7 +1287,6 @@ export default function Page() {
               >
                 <FiGithub size={18} />
               </a>
-
               <a
                 href={`mailto:${p.email}`}
                 aria-label="Email"
@@ -1128,7 +1296,6 @@ export default function Page() {
               </a>
             </div>
           </div>
-
           <div className="border-t border-slate-800 pt-5">
             <p className="text-xs text-slate-500 text-center">
               © {new Date().getFullYear()} {p.name}. Built with Next.js,
@@ -1137,6 +1304,7 @@ export default function Page() {
           </div>
         </div>
       </footer>
+
       {/* ── CERTIFICATE MODAL ────────────────────────────────── */}
       <CertificateModal cert={activeCert} onClose={() => setActiveCert(null)} />
     </div>
