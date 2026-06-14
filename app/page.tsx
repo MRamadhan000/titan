@@ -250,7 +250,7 @@ const DATA = {
     email: "mcahya830@gmail.com",
     github: "https://github.com/MRamadhan000",
     linkedin: "https://linkedin.com",
-    cv: "#",
+    cv: "/M Ramadhan Titan-CV.pdf",
   },
 
   projects: [
@@ -851,6 +851,7 @@ export default function Page() {
               <FiGithub size={20} />
             </a>
             <a
+              download
               href={p.cv}
               className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"
             >
@@ -1244,10 +1245,11 @@ export default function Page() {
                 <FiMail size={15} /> Contact Me
               </a>
               <a
+                download
                 href={p.cv}
                 className="inline-flex items-center gap-2 px-6 py-2.5 border border-white/40 text-white font-medium text-sm rounded-lg hover:bg-white/10 hover:border-white/70 transition-all"
               >
-                <FiDownload size={15} /> Download Resume
+                <FiDownload size={15} /> Download CV
               </a>
             </div>
           </FadeUp>
