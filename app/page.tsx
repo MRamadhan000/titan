@@ -265,7 +265,7 @@ const DATA = {
       imageBg: "linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%)",
       stack: ["Next.js", "NestJS", "PostgreSQL", "Docker", "VPS"],
       github: "",
-      demo: "https://fe-taretan-camera.vercel.app/",
+      demo: "https://drive.google.com/file/d/1Hja29tFStMWujUcySmuhxdYV-UuTzM-J/view?usp=sharing",
     },
     {
       name: "SpeakMinds",
@@ -278,7 +278,7 @@ const DATA = {
       imageBg: "linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)",
       stack: ["React", "NestJS", "Supabase"],
       github: "",
-      demo: "https://fe-speak-minds-academy.vercel.app",
+      demo: "https://drive.google.com/file/d/1zzIZ4VgneXWBwJNZoXbXMMX4NXq0Ea2v/view?usp=sharing",
     },
     {
       name: "UV Sense",
